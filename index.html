@@ -1,115 +1,172 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZEOZ Store</title><style>
-body{
-  margin:0;
-  font-family:sans-serif;
-  background:#050814;
-  color:white;
-  text-align:center;
+<title>ZEOZ Store</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#050814;color:white}
+header{position:sticky;top:0;z-index:10;background:#071024dd;backdrop-filter:blur(12px);border-bottom:1px solid #1e90ff55;padding:15px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:900;color:#4da3ff;text-shadow:0 0 15px #1e90ff}
+nav a{color:white;text-decoration:none;margin:0 8px;font-weight:bold}
+.cart-btn{background:#1e90ff;color:white;border:0;border-radius:12px;padding:10px 14px;font-weight:bold}
+
+.hero{text-align:center;padding:60px 20px;background:radial-gradient(circle,#123b7a 0%,#050814 60%)}
+.hero h1{font-size:44px;margin:0;color:#4da3ff;text-shadow:0 0 25px #1e90ff}
+.hero p{color:#cfe6ff;font-size:18px}
+
+.section{padding:35px 15px}
+.section h2{color:#4da3ff;font-size:32px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:1100px;margin:auto}
+
+.card{background:#0a1328;border:1px solid #1e90ff66;border-radius:24px;padding:18px;box-shadow:0 0 25px #1e90ff33;text-align:center}
+.badge{display:inline-block;background:#1e90ff33;border:1px solid #1e90ff77;border-radius:30px;padding:6px 12px;color:#bfe0ff;font-size:13px}
+
+.slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;border-radius:18px;margin-top:14px}
+.slider::-webkit-scrollbar{display:none}
+.slide{min-width:100%;scroll-snap-align:center}
+.slide img{width:100%;height:290px;object-fit:cover;border-radius:18px;border:1px solid #1e90ff55;background:#071024}
+
+.price{font-size:25px;font-weight:900;color:#4da3ff}
+.old{color:#888;text-decoration:line-through;font-size:16px;margin-left:8px}
+button{cursor:pointer}
+.add{width:100%;background:#1e90ff;color:white;border:0;border-radius:14px;padding:13px;font-size:16px;font-weight:900;box-shadow:0 0 18px #1e90ff55}
+
+.category-card{padding:28px;cursor:pointer;transition:.25s}
+.category-card:hover{transform:translateY(-5px);box-shadow:0 0 35px #1e90ff66}
+
+.cart{position:fixed;top:0;left:-360px;width:330px;height:100vh;background:#071024;border-right:1px solid #1e90ff66;z-index:99;padding:20px;transition:.3s;box-shadow:0 0 40px #000}
+.cart.open{left:0}
+.close{background:transparent;color:white;border:0;font-size:28px}
+.cart-item{border-bottom:1px solid #1e90ff33;padding:12px 0}
+.checkout{background:#22c55e;color:white;border:0;border-radius:14px;padding:13px;width:100%;font-weight:900;margin-top:15px}
+.clear{background:#ef4444;color:white;border:0;border-radius:14px;padding:13px;width:100%;font-weight:900;margin-top:10px}
+
+footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff33}
+@media(max-width:600px){
+  nav{display:none}
+  .hero h1{font-size:34px}
+  .slide img{height:330px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <button class="cart-btn" onclick="toggleCart()">السلة <span id="count">0</span></button>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#categories">الأقسام</a>
+    <a href="#fortnite">حسابات فورت</a>
+  </nav>
+  <div class="logo">ZEOZ STORE</div>
+</header>
+
+<div class="cart" id="cart">
+  <button class="close" onclick="toggleCart()">×</button>
+  <h2>السلة</h2>
+  <div id="cartItems">السلة فارغة</div>
+  <h3>الإجمالي: <span id="total">0</span>﷼</h3>
+  <button class="checkout" onclick="checkout()">إتمام الشراء عبر إنستغرام</button>
+  <button class="clear" onclick="clearCart()">تفريغ السلة</button>
+</div>
+
+<section class="hero" id="home">
+  <h1>اكتشف عالم ZEOZ</h1>
+  <p>متجر منتجات رقمية بتصميم أزرق رهيب وسلة شراء جاهزة</p>
+</section>
+
+<section class="section" id="categories">
+  <h2>الأقسام</h2>
+  <div class="grid">
+    <div class="card category-card" onclick="location.href='#fortnite'">حسابات فورت</div>
+    <div class="card category-card" onclick="openInsta('اشتراكات نتفلكس')">اشتراكات نتفلكس</div>
+    <div class="card category-card" onclick="openInsta('رينبو')">رينبو</div>
+    <div class="card category-card" onclick="openInsta('رشق متابعين')">رشق متابعين</div>
+  </div>
+</section>
+
+<section class="section" id="fortnite">
+  <h2>حسابات فورت</h2>
+
+  <div class="grid">
+    <div class="card">
+      <span class="badge">منتج مميز</span>
+
+      <div class="slider">
+        <div class="slide"><img src="images/image1.png"></div>
+        <div class="slide"><img src="images/image2.png"></div>
+        <div class="slide"><img src="images/image3.png"></div>
+        <div class="slide"><img src="images/image4.png"></div>
+        <div class="slide"><img src="images/image5.png"></div>
+        <div class="slide"><img src="images/image6.png"></div>
+      </div>
+
+      <p style="color:#bfe0ff">اسحب يمين ويسار لمشاهدة الصور</p>
+
+      <div class="price">250﷼</div>
+      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  جميع الحقوق محفوظة © ZEOZ STORE
+</footer>
+
+<script>
+let cart = [];
+
+function toggleCart(){
+  document.getElementById("cart").classList.toggle("open");
 }
 
-h1{
-  margin:20px;
-  color:#4da3ff;
+function addToCart(name, price){
+  cart.push({name, price});
+  renderCart();
+  toggleCart();
 }
 
-/* الأقسام */
-.sections{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
-  padding:20px;
+function renderCart(){
+  document.getElementById("count").innerText = cart.length;
+  let total = cart.reduce((sum,item)=>sum+item.price,0);
+  document.getElementById("total").innerText = total;
+
+  if(cart.length === 0){
+    document.getElementById("cartItems").innerHTML = "السلة فارغة";
+    return;
+  }
+
+  document.getElementById("cartItems").innerHTML = cart.map(item =>
+    `<div class="cart-item">${item.name} - ${item.price}﷼</div>`
+  ).join("");
 }
 
-.section{
-  background:#0a1328;
-  padding:15px;
-  border-radius:15px;
-  border:1px solid #1e90ff55;
-  cursor:pointer;
+function clearCart(){
+  cart = [];
+  renderCart();
 }
 
-/* المنتج */
-.card{
-  max-width:420px;
-  margin:20px auto;
-  background:#0a1328;
-  border-radius:25px;
-  padding:20px;
-  box-shadow:0 0 25px #1e90ff55;
-  display:none;
-}
+function checkout(){
+  if(cart.length === 0){
+    alert("السلة فارغة");
+    return;
+  }
 
-/* السلايدر */
-.slider{
-  display:flex;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-}
+  let text = "السلام عليكم، أبغى أطلب:%0A";
+  cart.forEach(item=>{
+    text += "- " + item.name + " بسعر " + item.price + " ريال%0A";
+  });
 
-.slide{
-  min-width:100%;
-}
-
-.slide img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-  border-radius:15px;
-}
-
-/* الأزرار */
-button{
-  margin:10px;
-  padding:10px 20px;
-  background:#1e90ff;
-  border:none;
-  border-radius:10px;
-  color:white;
-  cursor:pointer;
-}
-
-.price{
-  font-size:20px;
-  color:#4da3ff;
-}
-</style></head><body><h1>ZEOZ STORE</h1><!-- الأقسام --><div class="sections">
-  <div class="section" onclick="showProduct()">حسابات فورت</div>
-  <div class="section" onclick="go()">اشتراكات نتفلكس</div>
-  <div class="section" onclick="go()">رينبو</div>
-  <div class="section" onclick="go()">رشق متابعين</div>
-</div><!-- المنتج --><div class="card" id="product">  <div class="slider" id="slider">
-    <div class="slide"><img src="images/image1.jpg"></div>
-    <div class="slide"><img src="images/image2.jpg"></div>
-    <div class="slide"><img src="images/image3.jpg"></div>
-    <div class="slide"><img src="images/image4.jpg"></div>
-    <div class="slide"><img src="images/image5.jpg"></div>
-    <div class="slide"><img src="images/image6.jpg"></div>
-  </div>  <p>اسحب يمين أو يسار</p><button onclick="prev()">السابق</button>
-<button onclick="next()">التالي</button>
-
-  <p class="price">السعر: 250﷼</p><button onclick="go()">اطلب الآن</button>
-
-</div><script>
-const slider = document.getElementById("slider");
-
-function next(){
-  slider.scrollBy({ left:-slider.clientWidth, behavior:"smooth"});
-}
-
-function prev(){
-  slider.scrollBy({ left:slider.clientWidth, behavior:"smooth"});
-}
-
-function go(){
   window.open("https://www.instagram.com/zeoz.store/", "_blank");
 }
 
-function showProduct(){
-  document.getElementById("product").style.display="block";
+function openInsta(section){
+  window.open("https://www.instagram.com/zeoz.store/", "_blank");
 }
-</script></body>
+</script>
+
+</body>
 </html>
