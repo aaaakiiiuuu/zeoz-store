@@ -12,106 +12,104 @@ body{
 }
 
 h1{
-  margin:30px;
+  margin:20px;
   color:#4da3ff;
 }
 
+/* الأقسام */
+.sections{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+  padding:20px;
+}
+
+.section{
+  background:#0a1328;
+  padding:15px;
+  border-radius:15px;
+  border:1px solid #1e90ff55;
+  cursor:pointer;
+}
+
+/* المنتج */
 .card{
   max-width:420px;
-  margin:25px auto;
+  margin:20px auto;
   background:#0a1328;
-  border:1px solid #1e90ff55;
   border-radius:25px;
   padding:20px;
   box-shadow:0 0 25px #1e90ff55;
+  display:none;
 }
 
+/* السلايدر */
 .slider{
   display:flex;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
-  gap:12px;
-  border-radius:18px;
-  scroll-behavior:smooth;
-}
-
-.slider::-webkit-scrollbar{
-  display:none;
 }
 
 .slide{
   min-width:100%;
-  scroll-snap-align:center;
 }
 
 .slide img{
   width:100%;
-  height:320px;
+  height:300px;
   object-fit:cover;
-  border-radius:18px;
-  border:1px solid #1e90ff44;
+  border-radius:15px;
 }
 
-.controls{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:12px;
-}
-
-.controls button,
-.buy{
-  padding:11px 18px;
+/* الأزرار */
+button{
+  margin:10px;
+  padding:10px 20px;
   background:#1e90ff;
   border:none;
-  border-radius:12px;
+  border-radius:10px;
   color:white;
-  font-weight:bold;
   cursor:pointer;
 }
 
 .price{
-  font-size:22px;
-  font-weight:bold;
+  font-size:20px;
   color:#4da3ff;
 }
+</style></head><body><h1>ZEOZ STORE</h1><!-- الأقسام --><div class="sections">
+  <div class="section" onclick="showProduct()">حسابات فورت</div>
+  <div class="section" onclick="go()">اشتراكات نتفلكس</div>
+  <div class="section" onclick="go()">رينبو</div>
+  <div class="section" onclick="go()">رشق متابعين</div>
+</div><!-- المنتج --><div class="card" id="product">  <div class="slider" id="slider">
+    <div class="slide"><img src="images/image1.jpg"></div>
+    <div class="slide"><img src="images/image2.jpg"></div>
+    <div class="slide"><img src="images/image3.jpg"></div>
+    <div class="slide"><img src="images/image4.jpg"></div>
+    <div class="slide"><img src="images/image5.jpg"></div>
+    <div class="slide"><img src="images/image6.jpg"></div>
+  </div>  <p>اسحب يمين أو يسار</p><button onclick="prev()">السابق</button>
+<button onclick="next()">التالي</button>
 
-.hint{
-  color:#b7d8ff;
-  font-size:14px;
-}
-</style></head><body><h1>حسابات فورت</h1><div class="card">
-  <h2>images</h2>  <div class="slider" id="slider">
-    <div class="slide"><img src="images/image1.png"></div>
-    <div class="slide"><img src="images/image2.png"></div>
-    <div class="slide"><img src="images/image3.png"></div>
-    <div class="slide"><img src="images/image4.png"></div>
-    <div class="slide"><img src="images/image5.png"></div>
-    <div class="slide"><img src="images/image6.png"></div>
-  </div>  <p class="hint">اسحب يمين أو يسار لمشاهدة الصور</p>  <div class="controls">
-    <button onclick="prevSlide()">السابق</button>
-    <button onclick="nextSlide()">التالي</button>
-  </div>  <p class="price">السعر: 250﷼</p><button class="buy" onclick="buy()">اطلب الآن</button>
+  <p class="price">السعر: 250﷼</p><button onclick="go()">اطلب الآن</button>
 
 </div><script>
 const slider = document.getElementById("slider");
 
-function nextSlide(){
-  slider.scrollBy({
-    left: -slider.clientWidth,
-    behavior: "smooth"
-  });
+function next(){
+  slider.scrollBy({ left:-slider.clientWidth, behavior:"smooth"});
 }
 
-function prevSlide(){
-  slider.scrollBy({
-    left: slider.clientWidth,
-    behavior: "smooth"
-  });
+function prev(){
+  slider.scrollBy({ left:slider.clientWidth, behavior:"smooth"});
 }
 
-function buy(){
+function go(){
   window.open("https://www.instagram.com/zeoz.store/", "_blank");
+}
+
+function showProduct(){
+  document.getElementById("product").style.display="block";
 }
 </script></body>
 </html>
