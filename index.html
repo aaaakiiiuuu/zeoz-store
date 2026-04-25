@@ -3,51 +3,238 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZEOZ Store</title>
+<title>ZEOZ STORE</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#050814;color:white}
-header{position:sticky;top:0;z-index:10;background:#071024dd;backdrop-filter:blur(12px);border-bottom:1px solid #1e90ff55;padding:15px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:24px;font-weight:900;color:#4da3ff;text-shadow:0 0 15px #1e90ff}
-nav a{color:white;text-decoration:none;margin:0 8px;font-weight:bold}
-.cart-btn{background:#1e90ff;color:white;border:0;border-radius:12px;padding:10px 14px;font-weight:bold}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#050814;
+  color:white;
+}
 
-.hero{text-align:center;padding:60px 20px;background:radial-gradient(circle,#123b7a 0%,#050814 60%)}
-.hero h1{font-size:44px;margin:0;color:#4da3ff;text-shadow:0 0 25px #1e90ff}
-.hero p{color:#cfe6ff;font-size:18px}
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#071024ee;
+  border-bottom:1px solid #1e90ff55;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 18px;
+}
 
-.section{padding:35px 15px}
-.section h2{color:#4da3ff;font-size:32px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:1100px;margin:auto}
+.logo{
+  color:#4da3ff;
+  font-size:24px;
+  font-weight:900;
+  text-shadow:0 0 18px #1e90ff;
+}
 
-.card{background:#0a1328;border:1px solid #1e90ff66;border-radius:24px;padding:18px;box-shadow:0 0 25px #1e90ff33;text-align:center}
-.badge{display:inline-block;background:#1e90ff33;border:1px solid #1e90ff77;border-radius:30px;padding:6px 12px;color:#bfe0ff;font-size:13px}
+.menu,.cartBtn{
+  background:#0d1b36;
+  color:white;
+  border:1px solid #1e90ff66;
+  border-radius:12px;
+  padding:9px 13px;
+  font-size:18px;
+}
 
-.slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;border-radius:18px;margin-top:14px}
-.slider::-webkit-scrollbar{display:none}
-.slide{min-width:100%;scroll-snap-align:center}
-.slide img{width:100%;height:290px;object-fit:cover;border-radius:18px;border:1px solid #1e90ff55;background:#071024}
+nav{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  background:#071024;
+  padding:12px;
+  border-bottom:1px solid #1e90ff33;
+}
 
-.price{font-size:25px;font-weight:900;color:#4da3ff}
-.old{color:#888;text-decoration:line-through;font-size:16px;margin-left:8px}
-button{cursor:pointer}
-.add{width:100%;background:#1e90ff;color:white;border:0;border-radius:14px;padding:13px;font-size:16px;font-weight:900;box-shadow:0 0 18px #1e90ff55}
+nav a{
+  color:white;
+  text-decoration:none;
+  background:#0a1328;
+  padding:10px 16px;
+  border-radius:14px;
+  border:1px solid #1e90ff44;
+}
 
-.category-card{padding:28px;cursor:pointer;transition:.25s}
-.category-card:hover{transform:translateY(-5px);box-shadow:0 0 35px #1e90ff66}
+.hero{
+  text-align:center;
+  padding:55px 18px;
+  background:radial-gradient(circle,#123b7a 0%,#050814 62%);
+}
 
-.cart{position:fixed;top:0;left:-360px;width:330px;height:100vh;background:#071024;border-right:1px solid #1e90ff66;z-index:99;padding:20px;transition:.3s;box-shadow:0 0 40px #000}
+.hero h1{
+  margin:0;
+  font-size:38px;
+  color:#4da3ff;
+  text-shadow:0 0 25px #1e90ff;
+}
+
+.hero p{color:#cfe6ff}
+
+.heroLinks a{
+  display:inline-block;
+  color:white;
+  text-decoration:none;
+  margin:8px;
+  background:#1e90ff;
+  padding:12px 18px;
+  border-radius:16px;
+  font-weight:bold;
+}
+
+section{
+  padding:35px 16px;
+}
+
+section h2{
+  text-align:center;
+  color:#4da3ff;
+  font-size:32px;
+  margin-bottom:5px;
+}
+
+.sub{
+  text-align:center;
+  color:#b8d9ff;
+  margin-bottom:22px;
+}
+
+.products{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:14px;
+}
+
+.products::-webkit-scrollbar{display:none}
+
+.card{
+  min-width:280px;
+  max-width:280px;
+  scroll-snap-align:center;
+  background:#0a1328;
+  border:1px solid #1e90ff66;
+  border-radius:24px;
+  padding:16px;
+  box-shadow:0 0 25px #1e90ff33;
+}
+
+.badge{
+  display:inline-block;
+  background:#1e90ff33;
+  border:1px solid #1e90ff77;
+  border-radius:30px;
+  padding:6px 12px;
+  color:#bfe0ff;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  border-radius:18px;
+  background:#071024;
+  border:1px solid #1e90ff44;
+}
+
+.card h3{
+  margin:14px 0 8px;
+  font-size:21px;
+}
+
+.price{
+  font-size:23px;
+  color:#4da3ff;
+  font-weight:900;
+}
+
+.old{
+  color:#888;
+  text-decoration:line-through;
+  font-size:15px;
+  margin-left:8px;
+}
+
+.add{
+  width:100%;
+  background:#1e90ff;
+  color:white;
+  border:none;
+  border-radius:14px;
+  padding:13px;
+  font-weight:900;
+  margin-top:12px;
+}
+
+.cart{
+  position:fixed;
+  top:0;
+  left:-360px;
+  width:330px;
+  height:100vh;
+  background:#071024;
+  border-right:1px solid #1e90ff66;
+  z-index:999;
+  padding:20px;
+  transition:.3s;
+  box-shadow:0 0 40px #000;
+}
+
 .cart.open{left:0}
-.close{background:transparent;color:white;border:0;font-size:28px}
-.cart-item{border-bottom:1px solid #1e90ff33;padding:12px 0}
-.checkout{background:#22c55e;color:white;border:0;border-radius:14px;padding:13px;width:100%;font-weight:900;margin-top:15px}
-.clear{background:#ef4444;color:white;border:0;border-radius:14px;padding:13px;width:100%;font-weight:900;margin-top:10px}
 
-footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff33}
+.close{
+  background:none;
+  color:white;
+  border:0;
+  font-size:30px;
+}
+
+.item{
+  border-bottom:1px solid #1e90ff33;
+  padding:12px 0;
+}
+
+.checkout{
+  width:100%;
+  background:#22c55e;
+  color:white;
+  border:0;
+  border-radius:14px;
+  padding:13px;
+  font-weight:900;
+  margin-top:12px;
+}
+
+.clear{
+  width:100%;
+  background:#ef4444;
+  color:white;
+  border:0;
+  border-radius:14px;
+  padding:13px;
+  font-weight:900;
+  margin-top:10px;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#8fbfff;
+  border-top:1px solid #1e90ff33;
+}
+
 @media(max-width:600px){
-  nav{display:none}
-  .hero h1{font-size:34px}
-  .slide img{height:330px}
+  .hero h1{font-size:32px}
+  .card{min-width:82vw;max-width:82vw}
+  .card img{height:310px}
 }
 </style>
 </head>
@@ -55,61 +242,109 @@ footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff
 <body>
 
 <header>
-  <button class="cart-btn" onclick="toggleCart()">السلة <span id="count">0</span></button>
-  <nav>
-    <a href="#home">الرئيسية</a>
-    <a href="#categories">الأقسام</a>
-    <a href="#fortnite">حسابات فورت</a>
-  </nav>
+  <button class="menu">☰</button>
   <div class="logo">ZEOZ STORE</div>
+  <button class="cartBtn" onclick="toggleCart()">🛒 <span id="count">0</span></button>
 </header>
+
+<nav>
+  <a href="#home">الرئيسية</a>
+  <a href="#accounts">الحسابات</a>
+  <a href="#subscriptions">الاشتراكات</a>
+  <a href="#rainbow">رينبو</a>
+  <a href="#followers">رشق متابعين</a>
+</nav>
 
 <div class="cart" id="cart">
   <button class="close" onclick="toggleCart()">×</button>
   <h2>السلة</h2>
   <div id="cartItems">السلة فارغة</div>
-  <h3>الإجمالي: <span id="total">0</span>﷼</h3>
-  <button class="checkout" onclick="checkout()">إتمام الشراء عبر إنستغرام</button>
+  <h3>الإجمالي <span id="total">0</span>﷼</h3>
+  <button class="checkout" onclick="checkout()">إتمام الشراء عبر إنستقرام</button>
   <button class="clear" onclick="clearCart()">تفريغ السلة</button>
 </div>
 
 <section class="hero" id="home">
   <h1>اكتشف عالم ZEOZ</h1>
-  <p>متجر منتجات رقمية بتصميم أزرق رهيب وسلة شراء جاهزة</p>
-</section>
-
-<section class="section" id="categories">
-  <h2>الأقسام</h2>
-  <div class="grid">
-    <div class="card category-card" onclick="location.href='#fortnite'">حسابات فورت</div>
-    <div class="card category-card" onclick="openInsta('اشتراكات نتفلكس')">اشتراكات نتفلكس</div>
-    <div class="card category-card" onclick="openInsta('رينبو')">رينبو</div>
-    <div class="card category-card" onclick="openInsta('رشق متابعين')">رشق متابعين</div>
+  <p>حسابات واشتراكات ورينبو ورشق متابعين بتصميم متجر رهيب وسلة شراء جاهزة</p>
+  <div class="heroLinks">
+    <a href="#accounts">الحسابات</a>
+    <a href="#subscriptions">الاشتراكات</a>
+    <a href="#rainbow">رينبو</a>
+    <a href="#followers">رشق متابعين</a>
   </div>
 </section>
 
-<section class="section" id="fortnite">
-  <h2>حسابات فورت</h2>
+<section id="accounts">
+  <h2>الحسابات</h2>
+  <p class="sub">اسحب يمين ويسار لتصفح المنتجات</p>
 
-  <div class="grid">
+  <div class="products">
+
     <div class="card">
-      <span class="badge">منتج مميز</span>
+      <span class="badge">ضمان ذهبي</span>
+      <img src="images/image1.png" onerror="this.onerror=null;this.src='images/image1.jpg';">
+      <h3>حساب فورت نايت مميز</h3>
+      <div class="price"><span class="old">300﷼</span>250﷼</div>
+      <button class="add" onclick="addToCart('حساب فورت نايت مميز',250)">أضف للسلة</button>
+    </div>
 
-      <div class="slider">
-        <div class="slide"><img src="images/image1.png"></div>
-        <div class="slide"><img src="images/image2.png"></div>
-        <div class="slide"><img src="images/image3.png"></div>
-        <div class="slide"><img src="images/image4.png"></div>
-        <div class="slide"><img src="images/image5.png"></div>
-        <div class="slide"><img src="images/image6.png"></div>
-      </div>
-
-      <p style="color:#bfe0ff">اسحب يمين ويسار لمشاهدة الصور</p>
-
+    <div class="card">
+      <span class="badge">صورة 2</span>
+      <img src="images/image2.png" onerror="this.onerror=null;this.src='images/image2.jpg';">
+      <h3>حساب فورت</h3>
       <div class="price">250﷼</div>
       <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
     </div>
+
+    <div class="card">
+      <span class="badge">صورة 3</span>
+      <img src="images/image3.png" onerror="this.onerror=null;this.src='images/image3.jpg';">
+      <h3>حساب فورت</h3>
+      <div class="price">250﷼</div>
+      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
+    </div>
+
+    <div class="card">
+      <span class="badge">صورة 4</span>
+      <img src="images/image4.png" onerror="this.onerror=null;this.src='images/image4.jpg';">
+      <h3>حساب فورت</h3>
+      <div class="price">250﷼</div>
+      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
+    </div>
+
+    <div class="card">
+      <span class="badge">صورة 5</span>
+      <img src="images/image5.png" onerror="this.onerror=null;this.src='images/image5.jpg';">
+      <h3>حساب فورت</h3>
+      <div class="price">250﷼</div>
+      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
+    </div>
+
+    <div class="card">
+      <span class="badge">صورة 6</span>
+      <img src="images/image6.png" onerror="this.onerror=null;this.src='images/image6.jpg';">
+      <h3>حساب فورت</h3>
+      <div class="price">250﷼</div>
+      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
+    </div>
+
   </div>
+</section>
+
+<section id="subscriptions">
+  <h2>الاشتراكات</h2>
+  <p class="sub">قسم الاشتراكات — أضف منتجاتك لاحقًا</p>
+</section>
+
+<section id="rainbow">
+  <h2>رينبو</h2>
+  <p class="sub">قسم رينبو — أضف منتجاتك لاحقًا</p>
+</section>
+
+<section id="followers">
+  <h2>رشق متابعين</h2>
+  <p class="sub">قسم رشق متابعين — أضف منتجاتك لاحقًا</p>
 </section>
 
 <footer>
@@ -126,7 +361,7 @@ function toggleCart(){
 function addToCart(name, price){
   cart.push({name, price});
   renderCart();
-  toggleCart();
+  document.getElementById("cart").classList.add("open");
 }
 
 function renderCart(){
@@ -140,7 +375,7 @@ function renderCart(){
   }
 
   document.getElementById("cartItems").innerHTML = cart.map(item =>
-    `<div class="cart-item">${item.name} - ${item.price}﷼</div>`
+    `<div class="item">${item.name} - ${item.price}﷼</div>`
   ).join("");
 }
 
@@ -154,16 +389,6 @@ function checkout(){
     alert("السلة فارغة");
     return;
   }
-
-  let text = "السلام عليكم، أبغى أطلب:%0A";
-  cart.forEach(item=>{
-    text += "- " + item.name + " بسعر " + item.price + " ريال%0A";
-  });
-
-  window.open("https://www.instagram.com/zeoz.store/", "_blank");
-}
-
-function openInsta(section){
   window.open("https://www.instagram.com/zeoz.store/", "_blank");
 }
 </script>
