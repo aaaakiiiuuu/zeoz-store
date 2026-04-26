@@ -8,41 +8,364 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,sans-serif;background:#050814;color:white}
-header{position:sticky;top:0;z-index:1000;background:#071024ee;border-bottom:1px solid #1e90ff66;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;backdrop-filter:blur(12px)}
-.logoWrap{display:flex;align-items:center;gap:10px}
-.logoImg{width:48px;height:48px;border-radius:50%;object-fit:cover;border:1px solid #1e90ff88}
-.logo{color:#4da3ff;font-size:28px;font-weight:900;text-shadow:0 0 18px #1e90ff}
-.menuBtn,.cartBtn{background:#0d1b36;color:white;border:1px solid #1e90ff66;border-radius:18px;padding:12px 16px;font-size:22px}
-.menuPanel{position:fixed;top:82px;right:16px;left:16px;z-index:999;background:#071024;border:1px solid #1e90ff66;border-radius:24px;padding:15px;display:none;box-shadow:0 0 40px #1e90ff55}
-.menuPanel.show{display:grid;gap:10px}
-.menuPanel a{color:white;text-decoration:none;background:#0a1328;border:1px solid #1e90ff55;border-radius:16px;padding:15px;text-align:center;font-weight:900}
-.hero{text-align:center;padding:70px 20px;background:radial-gradient(circle,#123b7a 0%,#050814 62%)}
-.heroLogo{width:130px;height:130px;border-radius:50%;object-fit:cover;border:2px solid #1e90ff88;box-shadow:0 0 35px #1e90ff99;margin-bottom:20px}
-.hero h1{margin:0;font-size:42px;color:#4da3ff;text-shadow:0 0 25px #1e90ff}
-.hero p{color:#cfe6ff;font-size:18px;line-height:1.8}
-.heroLinks a{display:inline-block;color:white;text-decoration:none;margin:8px;background:#1e90ff;padding:14px 24px;border-radius:18px;font-weight:bold;box-shadow:0 0 20px #1e90ff66}
-section{padding:45px 16px}
-section h2{text-align:center;color:#4da3ff;font-size:36px;text-shadow:0 0 20px #1e90ff}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;max-width:1150px;margin:auto}
-.card{background:#0a1328;border:1px solid #1e90ff66;border-radius:28px;padding:18px;box-shadow:0 0 30px #1e90ff44;text-align:center}
-.badge{display:inline-block;background:#1e90ff22;border:1px solid #1e90ff77;border-radius:30px;padding:7px 14px;color:#bfe0ff;font-size:13px;margin-bottom:12px}
-.slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;border-radius:20px;scroll-behavior:smooth}
-.slider::-webkit-scrollbar{display:none}
-.slide{min-width:100%;scroll-snap-align:center}
-.slide img,.singleImg{width:100%;height:330px;object-fit:cover;border-radius:20px;background:#071024;border:1px solid #1e90ff44}
-.card h3{font-size:23px}
-.price{font-size:28px;color:#4da3ff;font-weight:900;margin:15px 0}
-.add{width:100%;background:#1e90ff;color:white;border:none;border-radius:16px;padding:15px;font-size:17px;font-weight:900;box-shadow:0 0 20px #1e90ff66}
-.cart{position:fixed;top:0;left:-360px;width:330px;height:100vh;background:#071024;border-right:1px solid #1e90ff66;z-index:2000;padding:20px;transition:.3s;box-shadow:0 0 40px #000}
-.cart.open{left:0}
-.close{background:none;color:white;border:0;font-size:32px}
-.item{border-bottom:1px solid #1e90ff33;padding:12px 0}
-.checkout{width:100%;background:#22c55e;color:white;border:0;border-radius:14px;padding:14px;font-weight:900;margin-top:12px}
-.clear{width:100%;background:#ef4444;color:white;border:0;border-radius:14px;padding:14px;font-weight:900;margin-top:10px}
-.empty{max-width:420px;margin:auto;background:#0a1328;border:1px solid #1e90ff44;border-radius:24px;padding:30px;text-align:center;color:#b8d9ff}
-footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff33}
-@media(max-width:600px){.hero h1{font-size:34px}.logo{font-size:25px}.slide img,.singleImg{height:350px}.grid{grid-template-columns:1fr}}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#050814;
+  color:white;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 18px;
+  background:#071024ee;
+  border-bottom:1px solid #1e90ff66;
+  backdrop-filter:blur(12px);
+}
+
+.logoBox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logoSmall{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #1e90ff;
+  box-shadow:0 0 20px #1e90ff;
+}
+
+.logoText{
+  color:#4da3ff;
+  font-size:25px;
+  font-weight:900;
+  text-shadow:0 0 18px #1e90ff;
+}
+
+.menuBtn,.cartBtn{
+  background:#0d1b36;
+  border:1px solid #1e90ff88;
+  color:white;
+  padding:12px 15px;
+  border-radius:18px;
+  font-size:22px;
+  box-shadow:0 0 15px #1e90ff44;
+}
+
+/* SIDE MENU */
+.menuPanel{
+  position:fixed;
+  top:0;
+  right:-82%;
+  width:82%;
+  height:100vh;
+  background:#070707;
+  z-index:3000;
+  transition:.35s;
+  padding-top:85px;
+  box-shadow:-15px 0 45px #000;
+  border-left:1px solid #1e90ff55;
+}
+
+.menuPanel.show{
+  right:0;
+}
+
+.menuPanel a{
+  display:block;
+  color:white;
+  text-decoration:none;
+  padding:24px 28px;
+  font-size:23px;
+  border-bottom:1px solid #222;
+}
+
+.menuPanel a:hover{
+  background:#111;
+  color:#4da3ff;
+}
+
+.closeMenu{
+  position:absolute;
+  top:20px;
+  left:25px;
+  background:none;
+  border:0;
+  color:white;
+  font-size:42px;
+}
+
+/* HERO */
+.hero{
+  margin-top:78px;
+  min-height:430px;
+  text-align:center;
+  padding:55px 20px;
+  background:
+    radial-gradient(circle at center,#12488e 0%,#071024 38%,#050814 70%);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    linear-gradient(90deg,transparent,#1e90ff33,transparent),
+    linear-gradient(0deg,transparent,#1e90ff22,transparent);
+  animation:energy 5s linear infinite;
+}
+
+@keyframes energy{
+  0%{transform:translateX(-80px) rotate(0deg)}
+  100%{transform:translateX(80px) rotate(360deg)}
+}
+
+.heroContent{
+  position:relative;
+  z-index:2;
+}
+
+.logoHeroWrap{
+  width:155px;
+  height:155px;
+  margin:0 auto 22px;
+  border-radius:50%;
+  padding:6px;
+  background:linear-gradient(135deg,#1e90ff,#ffffff,#1e90ff);
+  box-shadow:
+    0 0 25px #1e90ff,
+    0 0 55px #1e90ff,
+    inset 0 0 20px #1e90ff;
+  animation:pulse 2.2s infinite;
+}
+
+.logoHero{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  background:#071024;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);filter:brightness(1)}
+  50%{transform:scale(1.05);filter:brightness(1.25)}
+}
+
+.hero h1{
+  margin:0;
+  font-size:44px;
+  color:#4da3ff;
+  text-shadow:0 0 30px #1e90ff;
+}
+
+.hero p{
+  color:#d8ecff;
+  line-height:1.8;
+  font-size:18px;
+}
+
+.heroLinks a{
+  display:inline-block;
+  color:white;
+  text-decoration:none;
+  margin:8px;
+  background:#1e90ff;
+  padding:14px 24px;
+  border-radius:18px;
+  font-weight:900;
+  box-shadow:0 0 25px #1e90ff88;
+}
+
+/* SECTIONS */
+section{
+  padding:45px 12px;
+}
+
+h2{
+  text-align:center;
+  color:#4da3ff;
+  font-size:36px;
+  text-shadow:0 0 22px #1e90ff;
+}
+
+/* HORIZONTAL PRODUCTS */
+.products{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  padding:10px 8px 22px;
+  scroll-snap-type:x mandatory;
+}
+
+.products::-webkit-scrollbar{
+  display:none;
+}
+
+.card{
+  min-width:285px;
+  max-width:285px;
+  background:#0a1328;
+  border:1px solid #1e90ff66;
+  border-radius:26px;
+  padding:16px;
+  scroll-snap-align:start;
+  box-shadow:0 0 28px #1e90ff44;
+  text-align:center;
+}
+
+.badge{
+  display:inline-block;
+  margin-bottom:12px;
+  padding:7px 14px;
+  border-radius:30px;
+  background:#1e90ff22;
+  border:1px solid #1e90ff77;
+  color:#bfe0ff;
+  font-size:13px;
+}
+
+/* IMAGE SLIDER INSIDE CARD */
+.slider{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  border-radius:18px;
+  scroll-behavior:smooth;
+}
+
+.slider::-webkit-scrollbar{
+  display:none;
+}
+
+.slide{
+  min-width:100%;
+  scroll-snap-align:center;
+}
+
+.slide img,
+.singleImg{
+  width:100%;
+  height:310px;
+  object-fit:cover;
+  border-radius:18px;
+  background:#071024;
+  border:1px solid #1e90ff55;
+}
+
+.card h3{
+  font-size:21px;
+}
+
+.price{
+  color:#4da3ff;
+  font-size:26px;
+  font-weight:900;
+  margin:12px 0;
+}
+
+.add{
+  width:100%;
+  padding:13px;
+  background:#1e90ff;
+  border:none;
+  border-radius:15px;
+  color:white;
+  font-weight:900;
+  font-size:16px;
+  box-shadow:0 0 22px #1e90ff77;
+}
+
+/* CART */
+.cart{
+  position:fixed;
+  top:0;
+  left:-360px;
+  width:330px;
+  height:100vh;
+  background:#071024;
+  border-right:1px solid #1e90ff66;
+  z-index:4000;
+  padding:20px;
+  transition:.3s;
+  box-shadow:0 0 45px #000;
+}
+
+.cart.open{
+  left:0;
+}
+
+.closeCart{
+  background:none;
+  color:white;
+  border:0;
+  font-size:32px;
+}
+
+.item{
+  border-bottom:1px solid #1e90ff33;
+  padding:12px 0;
+}
+
+.checkout{
+  width:100%;
+  background:#22c55e;
+  color:white;
+  border:0;
+  border-radius:14px;
+  padding:14px;
+  font-weight:900;
+  margin-top:12px;
+}
+
+.clear{
+  width:100%;
+  background:#ef4444;
+  color:white;
+  border:0;
+  border-radius:14px;
+  padding:14px;
+  font-weight:900;
+  margin-top:10px;
+}
+
+.empty{
+  max-width:420px;
+  margin:auto;
+  background:#0a1328;
+  border:1px solid #1e90ff44;
+  border-radius:24px;
+  padding:30px;
+  text-align:center;
+  color:#b8d9ff;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#8fbfff;
+  border-top:1px solid #1e90ff33;
+}
+
+@media(max-width:600px){
+  .logoText{font-size:23px}
+  .hero h1{font-size:34px}
+  .hero{min-height:420px}
+  .card{min-width:82vw;max-width:82vw}
+  .slide img,.singleImg{height:350px}
+}
 </style>
 </head>
 
@@ -51,15 +374,16 @@ footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff
 <header>
   <button class="menuBtn" onclick="toggleMenu()">☰</button>
 
-  <div class="logoWrap">
-    <img class="logoImg" src="images/hamm.png" onerror="this.style.display='none'">
-    <div class="logo">ZEOZ STORE</div>
+  <div class="logoBox">
+    <img class="logoSmall" src="images/hamm.png" onerror="this.onerror=null;this.src='images/hamm.jpg'">
+    <div class="logoText">ZEOZ STORE</div>
   </div>
 
   <button class="cartBtn" onclick="toggleCart()">🛒 <span id="count">0</span></button>
 </header>
 
 <div class="menuPanel" id="menuPanel">
+  <button class="closeMenu" onclick="toggleMenu()">×</button>
   <a href="#home" onclick="toggleMenu()">الرئيسية</a>
   <a href="#accounts" onclick="toggleMenu()">الحسابات</a>
   <a href="#subscriptions" onclick="toggleMenu()">الاشتراكات</a>
@@ -68,7 +392,7 @@ footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff
 </div>
 
 <div class="cart" id="cart">
-  <button class="close" onclick="toggleCart()">×</button>
+  <button class="closeCart" onclick="toggleCart()">×</button>
   <h2>السلة</h2>
   <div id="cartItems">السلة فارغة</div>
   <h3>الإجمالي: <span id="total">0</span>﷼</h3>
@@ -77,23 +401,30 @@ footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff
 </div>
 
 <section class="hero" id="home">
-  <img class="heroLogo" src="images/hamm.png" onerror="this.style.display='none'">
-  <h1>اكتشف عالم ZEOZ</h1>
-  <p>حسابات واشتراكات ورينبو ورشق متابعين بتصميم متجر رهيب وسلة شراء جاهزة</p>
-  <div class="heroLinks">
-    <a href="#accounts">الحسابات</a>
-    <a href="#subscriptions">الاشتراكات</a>
-    <a href="#rainbow">رينبو</a>
-    <a href="#followers">رشق متابعين</a>
+  <div class="heroContent">
+    <div class="logoHeroWrap">
+      <img class="logoHero" src="images/hamm.png" onerror="this.onerror=null;this.src='images/hamm.jpg'">
+    </div>
+
+    <h1>ZEOZ STORE</h1>
+    <p>حسابات واشتراكات ورينبو ورشق متابعين بتصميم رهيب وسلة شراء جاهزة</p>
+
+    <div class="heroLinks">
+      <a href="#accounts">الحسابات</a>
+      <a href="#subscriptions">الاشتراكات</a>
+      <a href="#rainbow">رينبو</a>
+      <a href="#followers">رشق متابعين</a>
+    </div>
   </div>
 </section>
 
 <section id="accounts">
   <h2>الحسابات</h2>
-  <div class="grid">
+
+  <div class="products">
 
     <div class="card">
-      <span class="badge">حساب فورت مميز</span>
+      <span class="badge">حساب فورت</span>
       <div class="slider">
         <div class="slide"><img src="images/image1.png" onerror="this.onerror=null;this.src='images/image1.jpg'"></div>
         <div class="slide"><img src="images/image2.png" onerror="this.onerror=null;this.src='images/image2.jpg'"></div>
@@ -224,7 +555,7 @@ footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff
 
 <section id="subscriptions">
   <h2>الاشتراكات</h2>
-  <div class="grid">
+  <div class="products">
     <div class="card">
       <span class="badge">نتفلكس</span>
       <img class="singleImg" src="images/net.png" onerror="this.onerror=null;this.src='images/net.jpg'">
@@ -237,7 +568,7 @@ footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff
 
 <section id="rainbow">
   <h2>رينبو</h2>
-  <div class="grid">
+  <div class="products">
     <div class="card">
       <span class="badge">رينبو</span>
       <img class="singleImg" src="images/rrr.png" onerror="this.onerror=null;this.src='images/rrr.jpg'">
@@ -282,7 +613,7 @@ function addToCart(name, price){
 
 function renderCart(){
   document.getElementById("count").innerText = cart.length;
-  document.getElementById("total").innerText = cart.reduce((s,i)=>s+i.price,0);
+  document.getElementById("total").innerText = cart.reduce((sum,item)=>sum+item.price,0);
 
   if(cart.length === 0){
     document.getElementById("cartItems").innerHTML = "السلة فارغة";
