@@ -16,10 +16,15 @@ header{
   padding:14px 18px;background:#071024ee;
   border-bottom:1px solid #1e90ff66;backdrop-filter:blur(12px)
 }
+
 .logoBox{display:flex;align-items:center;gap:10px}
 .logoSmall{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #1e90ff;box-shadow:0 0 20px #1e90ff}
 .logoText{color:#4da3ff;font-size:25px;font-weight:900;text-shadow:0 0 18px #1e90ff}
-.menuBtn,.cartBtn{background:#0d1b36;border:1px solid #1e90ff88;color:white;padding:12px 15px;border-radius:18px;font-size:22px;box-shadow:0 0 15px #1e90ff44}
+
+.menuBtn,.cartBtn{
+  background:#0d1b36;border:1px solid #1e90ff88;color:white;
+  padding:12px 15px;border-radius:18px;font-size:22px;box-shadow:0 0 15px #1e90ff44
+}
 
 .menuPanel{
   position:fixed;top:0;right:-82%;width:82%;height:100vh;
@@ -32,10 +37,12 @@ header{
 .closeMenu{position:absolute;top:20px;left:25px;background:none;border:0;color:white;font-size:42px}
 
 .hero{
-  margin-top:78px;min-height:360px;text-align:center;padding:55px 20px;
+  margin-top:78px;
+  text-align:center;
+  padding:55px 20px 35px;
   background:radial-gradient(circle,#12488e 0%,#071024 38%,#050814 70%);
-  position:relative;overflow:hidden
 }
+
 .logoHeroWrap{
   width:155px;height:155px;margin:0 auto 22px;border-radius:50%;padding:6px;
   background:linear-gradient(135deg,#1e90ff,#fff,#1e90ff);
@@ -44,11 +51,8 @@ header{
 }
 .logoHero{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#071024}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
 .hero h1{margin:0;font-size:44px;color:#4da3ff;text-shadow:0 0 30px #1e90ff}
-.heroLinks a{
-  display:inline-block;color:white;text-decoration:none;margin:8px;background:#1e90ff;
-  padding:14px 24px;border-radius:18px;font-weight:900;box-shadow:0 0 25px #1e90ff88
-}
 
 section{padding:45px 12px}
 h2{text-align:center;color:#4da3ff;font-size:36px;text-shadow:0 0 22px #1e90ff}
@@ -61,14 +65,18 @@ h2{text-align:center;color:#4da3ff;font-size:36px;text-shadow:0 0 22px #1e90ff}
   border-radius:26px;padding:16px;scroll-snap-align:start;
   box-shadow:0 0 28px #1e90ff44;text-align:center
 }
+
 .slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:18px;scroll-behavior:smooth}
 .slide{min-width:100%;scroll-snap-align:center}
+
 .slide img,.singleImg{
   width:100%;height:310px;object-fit:cover;border-radius:18px;
   background:#071024;border:1px solid #1e90ff55;cursor:pointer
 }
+
 .card h3{font-size:21px}
 .price{color:#4da3ff;font-size:26px;font-weight:900;margin:12px 0}
+
 .add{
   width:100%;padding:13px;background:#1e90ff;border:none;border-radius:15px;
   color:white;font-weight:900;font-size:16px;box-shadow:0 0 22px #1e90ff77
@@ -84,17 +92,41 @@ h2{text-align:center;color:#4da3ff;font-size:36px;text-shadow:0 0 22px #1e90ff}
 .checkout{width:100%;background:#22c55e;color:white;border:0;border-radius:14px;padding:14px;font-weight:900;margin-top:12px}
 .clear{width:100%;background:#ef4444;color:white;border:0;border-radius:14px;padding:14px;font-weight:900;margin-top:10px}
 
-/* تكبير الصور */
 .lightbox{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);
-  z-index:6000;align-items:center;justify-content:center
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.96);
+  z-index:9000;
+  align-items:center;
+  justify-content:center;
 }
+
 .lightbox.show{display:flex}
-.lightbox img{max-width:92%;max-height:78%;border-radius:18px;box-shadow:0 0 35px #1e90ff}
-.lightbox button{position:absolute;background:#1e90ff;color:white;border:0;border-radius:14px;padding:12px 18px;font-size:24px}
+
+.lightbox img{
+  max-width:92vw;
+  max-height:78vh;
+  object-fit:contain;
+  border-radius:18px;
+  box-shadow:0 0 35px #1e90ff;
+  background:#111;
+}
+
+.lbClose,.lbNext,.lbPrev{
+  position:absolute;
+  background:#1e90ff;
+  color:white;
+  border:0;
+  border-radius:18px;
+  font-size:30px;
+  font-weight:bold;
+  padding:12px 18px;
+}
+
 .lbClose{top:25px;left:25px}
-.lbNext{right:20px}
-.lbPrev{left:20px}
+.lbNext{right:18px;top:50%}
+.lbPrev{left:18px;top:50%}
 
 footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff33}
 
@@ -148,123 +180,73 @@ footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff
     <img class="logoHero" src="images/hamm.png" onerror="this.onerror=null;this.src='images/hamm.jpg'">
   </div>
   <h1>ZEOZ STORE</h1>
-  <div class="heroLinks">
-    <a href="#accounts">الحسابات</a>
-    <a href="#subscriptions">الاشتراكات</a>
-    <a href="#rainbow">رينبو</a>
-    <a href="#followers">رشق متابعين</a>
-  </div>
 </section>
 
 <section id="accounts">
 <h2>الحسابات</h2>
 <div class="products">
 
+<script>
+function productSlider(prefix, count){
+  let html = '<div class="slider">';
+  for(let i=1;i<=count;i++){
+    html += `<div class="slide"><img onclick="openLightboxByPrefix('${prefix}',${count},${i-1})" src="images/${prefix}${i}.png" onerror="this.onerror=null;this.src='images/${prefix}${i}.jpg'"></div>`;
+  }
+  html += '</div>';
+  document.write(html);
+}
+</script>
+
 <div class="card">
-<div class="slider">
-<div class="slide"><img onclick="openLightbox(['images/image1.png','images/image2.png','images/image3.png','images/image4.png','images/image5.png','images/image6.png'],0)" src="images/image1.png" onerror="this.src='images/image1.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/image1.png','images/image2.png','images/image3.png','images/image4.png','images/image5.png','images/image6.png'],1)" src="images/image2.png" onerror="this.src='images/image2.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/image1.png','images/image2.png','images/image3.png','images/image4.png','images/image5.png','images/image6.png'],2)" src="images/image3.png" onerror="this.src='images/image3.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/image1.png','images/image2.png','images/image3.png','images/image4.png','images/image5.png','images/image6.png'],3)" src="images/image4.png" onerror="this.src='images/image4.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/image1.png','images/image2.png','images/image3.png','images/image4.png','images/image5.png','images/image6.png'],4)" src="images/image5.png" onerror="this.src='images/image5.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/image1.png','images/image2.png','images/image3.png','images/image4.png','images/image5.png','images/image6.png'],5)" src="images/image6.png" onerror="this.src='images/image6.jpg'"></div>
-</div>
+<script>productSlider('image',6)</script>
 <h3>حساب فورت مميز</h3><div class="price">250﷼</div>
 <button class="add" onclick="addToCart('حساب فورت مميز',250)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<div class="slider">
-<div class="slide"><img onclick="openLightbox(['images/pp1.png','images/pp2.png','images/pp3.png','images/pp4.png','images/pp5.png','images/pp6.png'],0)" src="images/pp1.png" onerror="this.src='images/pp1.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/pp1.png','images/pp2.png','images/pp3.png','images/pp4.png','images/pp5.png','images/pp6.png'],1)" src="images/pp2.png" onerror="this.src='images/pp2.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/pp1.png','images/pp2.png','images/pp3.png','images/pp4.png','images/pp5.png','images/pp6.png'],2)" src="images/pp3.png" onerror="this.src='images/pp3.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/pp1.png','images/pp2.png','images/pp3.png','images/pp4.png','images/pp5.png','images/pp6.png'],3)" src="images/pp4.png" onerror="this.src='images/pp4.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/pp1.png','images/pp2.png','images/pp3.png','images/pp4.png','images/pp5.png','images/pp6.png'],4)" src="images/pp5.png" onerror="this.src='images/pp5.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/pp1.png','images/pp2.png','images/pp3.png','images/pp4.png','images/pp5.png','images/pp6.png'],5)" src="images/pp6.png" onerror="this.src='images/pp6.jpg'"></div>
-</div>
+<script>productSlider('pp',6)</script>
 <h3>حساب فورت مميز 2</h3><div class="price">230﷼</div>
 <button class="add" onclick="addToCart('حساب فورت مميز 2',230)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<div class="slider">
-<div class="slide"><img onclick="openLightbox(['images/mm1.png','images/mm2.png','images/mm3.png','images/mm4.png','images/mm5.png'],0)" src="images/mm1.png" onerror="this.src='images/mm1.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/mm1.png','images/mm2.png','images/mm3.png','images/mm4.png','images/mm5.png'],1)" src="images/mm2.png" onerror="this.src='images/mm2.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/mm1.png','images/mm2.png','images/mm3.png','images/mm4.png','images/mm5.png'],2)" src="images/mm3.png" onerror="this.src='images/mm3.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/mm1.png','images/mm2.png','images/mm3.png','images/mm4.png','images/mm5.png'],3)" src="images/mm4.png" onerror="this.src='images/mm4.jpg'"></div>
-<div class="slide"><img onclick="openLightbox(['images/mm1.png','images/mm2.png','images/mm3.png','images/mm4.png','images/mm5.png'],4)" src="images/mm5.png" onerror="this.src='images/mm5.jpg'"></div>
-</div>
+<script>productSlider('mm',5)</script>
 <h3>حساب فورت مميز3</h3><div class="price">180﷼</div>
 <button class="add" onclick="addToCart('حساب فورت مميز3',180)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<div class="slider">
-<div class="slide"><img src="images/ww1.png" onerror="this.src='images/ww1.jpg'"></div>
-<div class="slide"><img src="images/ww2.png" onerror="this.src='images/ww2.jpg'"></div>
-<div class="slide"><img src="images/ww3.png" onerror="this.src='images/ww3.jpg'"></div>
-<div class="slide"><img src="images/ww4.png" onerror="this.src='images/ww4.jpg'"></div>
-<div class="slide"><img src="images/ww5.png" onerror="this.src='images/ww5.jpg'"></div>
-<div class="slide"><img src="images/ww6.png" onerror="this.src='images/ww6.jpg'"></div>
-</div>
+<script>productSlider('ww',6)</script>
 <h3>حساب فورت مميز4</h3><div class="price">360﷼</div>
 <button class="add" onclick="addToCart('حساب فورت مميز4',360)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<div class="slider">
-<div class="slide"><img src="images/tt1.png" onerror="this.src='images/tt1.jpg'"></div>
-<div class="slide"><img src="images/tt2.png" onerror="this.src='images/tt2.jpg'"></div>
-<div class="slide"><img src="images/tt3.png" onerror="this.src='images/tt3.jpg'"></div>
-<div class="slide"><img src="images/tt4.png" onerror="this.src='images/tt4.jpg'"></div>
-<div class="slide"><img src="images/tt5.png" onerror="this.src='images/tt5.jpg'"></div>
-<div class="slide"><img src="images/tt6.png" onerror="this.src='images/tt6.jpg'"></div>
-</div>
+<script>productSlider('tt',6)</script>
 <h3>حساب فورت مميز5</h3><div class="price">150﷼</div>
 <button class="add" onclick="addToCart('حساب فورت مميز5',150)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<div class="slider">
-<div class="slide"><img src="images/cc1.png" onerror="this.src='images/cc1.jpg'"></div>
-<div class="slide"><img src="images/cc2.png" onerror="this.src='images/cc2.jpg'"></div>
-<div class="slide"><img src="images/cc3.png" onerror="this.src='images/cc3.jpg'"></div>
-<div class="slide"><img src="images/cc4.png" onerror="this.src='images/cc4.jpg'"></div>
-</div>
+<script>productSlider('cc',4)</script>
 <h3>حساب فورت مميز6</h3><div class="price">380﷼</div>
 <button class="add" onclick="addToCart('حساب فورت مميز6',380)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<div class="slider">
-<div class="slide"><img src="images/vv1.png" onerror="this.src='images/vv1.jpg'"></div>
-<div class="slide"><img src="images/vv2.png" onerror="this.src='images/vv2.jpg'"></div>
-<div class="slide"><img src="images/vv3.png" onerror="this.src='images/vv3.jpg'"></div>
-<div class="slide"><img src="images/vv4.png" onerror="this.src='images/vv4.jpg'"></div>
-<div class="slide"><img src="images/vv5.png" onerror="this.src='images/vv5.jpg'"></div>
-<div class="slide"><img src="images/vv6.png" onerror="this.src='images/vv6.jpg'"></div>
-</div>
+<script>productSlider('vv',6)</script>
 <h3>حساب فورت مميز7</h3><div class="price">280﷼</div>
 <button class="add" onclick="addToCart('حساب فورت مميز7',280)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<div class="slider">
-<div class="slide"><img src="images/kk1.png" onerror="this.src='images/kk1.jpg'"></div>
-<div class="slide"><img src="images/kk2.png" onerror="this.src='images/kk2.jpg'"></div>
-<div class="slide"><img src="images/kk3.png" onerror="this.src='images/kk3.jpg'"></div>
-<div class="slide"><img src="images/kk4.png" onerror="this.src='images/kk4.jpg'"></div>
-<div class="slide"><img src="images/kk5.png" onerror="this.src='images/kk5.jpg'"></div>
-<div class="slide"><img src="images/kk6.png" onerror="this.src='images/kk6.jpg'"></div>
-<div class="slide"><img src="images/kk7.png" onerror="this.src='images/kk7.jpg'"></div>
-<div class="slide"><img src="images/kk8.png" onerror="this.src='images/kk8.jpg'"></div>
-</div>
+<script>productSlider('kk',8)</script>
 <h3>حساب فورت مميز8</h3><div class="price">480﷼</div>
 <button class="add" onclick="addToCart('حساب فورت مميز8',480)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<img class="singleImg" src="images/cod.png" onerror="this.src='images/cod.jpg'">
+<img class="singleImg" onclick="openSingle('images/cod')" src="images/cod.png" onerror="this.onerror=null;this.src='images/cod.jpg'">
 <h3>كود ويلد كات</h3><div class="price">250﷼</div>
 <button class="add" onclick="addToCart('كود ويلد كات',250)">أضف للسلة</button>
 </div>
@@ -276,7 +258,7 @@ footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff
 <h2>الاشتراكات</h2>
 <div class="products">
 <div class="card">
-<img class="singleImg" src="images/net.png" onerror="this.src='images/net.jpg'">
+<img class="singleImg" onclick="openSingle('images/net')" src="images/net.png" onerror="this.onerror=null;this.src='images/net.jpg'">
 <h3>اشتراك نتفلكس شهر</h3><div class="price">30﷼</div>
 <button class="add" onclick="addToCart('اشتراك نتفلكس شهر',30)">أضف للسلة</button>
 </div>
@@ -286,34 +268,38 @@ footer{text-align:center;padding:25px;color:#8fbfff;border-top:1px solid #1e90ff
 <section id="rainbow">
 <h2>رينبو</h2>
 <div class="products">
+
 <div class="card">
-<img class="singleImg" src="images/rrr.png" onerror="this.src='images/rrr.jpg'">
+<img class="singleImg" onclick="openSingle('images/rrr')" src="images/rrr.png" onerror="this.onerror=null;this.src='images/rrr.jpg'">
 <h3>حسابات لفل 50</h3><div class="price">50﷼</div>
 <button class="add" onclick="addToCart('حسابات لفل 50',50)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<img class="singleImg" src="images/eee.png" onerror="this.src='images/eee.jpg'">
+<img class="singleImg" onclick="openSingle('images/eee')" src="images/eee.png" onerror="this.onerror=null;this.src='images/eee.jpg'">
 <h3>حسابات رانك جابيون</h3><div class="price">115﷼</div>
 <button class="add" onclick="addToCart('حسابات رانك جابيون',115)">أضف للسلة</button>
 </div>
+
 </div>
 </section>
 
 <section id="followers">
 <h2>رشق متابعين</h2>
 <div class="products">
+
 <div class="card">
-<img class="singleImg" src="images/ins.png" onerror="this.src='images/ins.jpg'">
+<img class="singleImg" onclick="openSingle('images/ins')" src="images/ins.png" onerror="this.onerror=null;this.src='images/ins.jpg'">
 <h3>5k متابع</h3><div class="price">35﷼</div>
 <button class="add" onclick="addToCart('5k متابع',35)">أضف للسلة</button>
 </div>
 
 <div class="card">
-<img class="singleImg" src="images/inp.png" onerror="this.src='images/inp.jpg'">
+<img class="singleImg" onclick="openSingle('images/inp')" src="images/inp.png" onerror="this.onerror=null;this.src='images/inp.jpg'">
 <h3>10k لايك</h3><div class="price">50﷼</div>
 <button class="add" onclick="addToCart('10k لايك',50)">أضف للسلة</button>
 </div>
+
 </div>
 </section>
 
@@ -347,15 +333,31 @@ function checkout(){
   window.open("https://www.instagram.com/zeoz.store/","_blank");
 }
 
-function openLightbox(images,index){
-  lightboxImages = images;
+function openLightboxByPrefix(prefix,count,index){
+  lightboxImages = [];
+  for(let i=1;i<=count;i++){
+    lightboxImages.push(`images/${prefix}${i}`);
+  }
   lightboxIndex = index;
   document.getElementById("lightbox").classList.add("show");
   showLightboxImage();
 }
 
+function openSingle(path){
+  lightboxImages = [path];
+  lightboxIndex = 0;
+  document.getElementById("lightbox").classList.add("show");
+  showLightboxImage();
+}
+
 function showLightboxImage(){
-  document.getElementById("lightboxImg").src = lightboxImages[lightboxIndex];
+  const img = document.getElementById("lightboxImg");
+  const base = lightboxImages[lightboxIndex];
+  img.onerror = function(){
+    img.onerror = null;
+    img.src = base + ".jpg";
+  };
+  img.src = base + ".png";
 }
 
 function closeLightbox(){
