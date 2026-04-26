@@ -7,6 +7,7 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Arial,sans-serif;
@@ -28,53 +29,62 @@ header{
 
 .logo{
   color:#4da3ff;
-  font-size:24px;
+  font-size:28px;
   font-weight:900;
   text-shadow:0 0 18px #1e90ff;
 }
 
-.menu,.cartBtn{
+.menuBtn,.cartBtn{
   background:#0d1b36;
   color:white;
   border:1px solid #1e90ff66;
-  border-radius:12px;
-  padding:9px 13px;
-  font-size:18px;
+  border-radius:16px;
+  padding:12px 16px;
+  font-size:22px;
 }
 
-nav{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
+.mobileMenu{
+  display:none;
   background:#071024;
-  padding:12px;
   border-bottom:1px solid #1e90ff33;
+  padding:15px;
+  text-align:center;
 }
 
-nav a{
+.mobileMenu.show{
+  display:block;
+}
+
+.mobileMenu a{
+  display:block;
   color:white;
   text-decoration:none;
   background:#0a1328;
-  padding:10px 16px;
-  border-radius:14px;
   border:1px solid #1e90ff44;
+  border-radius:14px;
+  padding:14px;
+  margin:10px 0;
+  font-weight:bold;
 }
 
 .hero{
   text-align:center;
-  padding:55px 18px;
+  padding:70px 20px;
   background:radial-gradient(circle,#123b7a 0%,#050814 62%);
 }
 
 .hero h1{
   margin:0;
-  font-size:38px;
+  font-size:42px;
   color:#4da3ff;
   text-shadow:0 0 25px #1e90ff;
 }
 
-.hero p{color:#cfe6ff}
+.hero p{
+  color:#cfe6ff;
+  font-size:18px;
+  line-height:1.8;
+}
 
 .heroLinks a{
   display:inline-block;
@@ -82,47 +92,37 @@ nav a{
   text-decoration:none;
   margin:8px;
   background:#1e90ff;
-  padding:12px 18px;
-  border-radius:16px;
+  padding:14px 24px;
+  border-radius:18px;
   font-weight:bold;
+  box-shadow:0 0 20px #1e90ff66;
 }
 
 section{
-  padding:35px 16px;
+  padding:40px 16px;
 }
 
 section h2{
   text-align:center;
   color:#4da3ff;
-  font-size:32px;
-  margin-bottom:5px;
+  font-size:36px;
+  text-shadow:0 0 20px #1e90ff;
 }
 
 .sub{
   text-align:center;
   color:#b8d9ff;
-  margin-bottom:22px;
 }
-
-.products{
-  display:flex;
-  gap:18px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  padding-bottom:14px;
-}
-
-.products::-webkit-scrollbar{display:none}
 
 .card{
-  min-width:280px;
-  max-width:280px;
-  scroll-snap-align:center;
+  max-width:420px;
+  margin:25px auto;
   background:#0a1328;
   border:1px solid #1e90ff66;
-  border-radius:24px;
-  padding:16px;
-  box-shadow:0 0 25px #1e90ff33;
+  border-radius:28px;
+  padding:18px;
+  box-shadow:0 0 30px #1e90ff44;
+  text-align:center;
 }
 
 .badge{
@@ -130,37 +130,48 @@ section h2{
   background:#1e90ff33;
   border:1px solid #1e90ff77;
   border-radius:30px;
-  padding:6px 12px;
+  padding:7px 14px;
   color:#bfe0ff;
   font-size:13px;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
-.card img{
+.slider{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  gap:12px;
+  border-radius:20px;
+  scroll-behavior:smooth;
+}
+
+.slider::-webkit-scrollbar{
+  display:none;
+}
+
+.slide{
+  min-width:100%;
+  scroll-snap-align:center;
+}
+
+.slide img{
   width:100%;
-  height:250px;
+  height:330px;
   object-fit:cover;
-  border-radius:18px;
+  border-radius:20px;
   background:#071024;
   border:1px solid #1e90ff44;
 }
 
 .card h3{
-  margin:14px 0 8px;
-  font-size:21px;
+  font-size:24px;
 }
 
 .price{
-  font-size:23px;
+  font-size:28px;
   color:#4da3ff;
   font-weight:900;
-}
-
-.old{
-  color:#888;
-  text-decoration:line-through;
-  font-size:15px;
-  margin-left:8px;
+  margin:15px 0;
 }
 
 .add{
@@ -168,10 +179,11 @@ section h2{
   background:#1e90ff;
   color:white;
   border:none;
-  border-radius:14px;
-  padding:13px;
+  border-radius:16px;
+  padding:15px;
+  font-size:17px;
   font-weight:900;
-  margin-top:12px;
+  box-shadow:0 0 20px #1e90ff66;
 }
 
 .cart{
@@ -188,13 +200,15 @@ section h2{
   box-shadow:0 0 40px #000;
 }
 
-.cart.open{left:0}
+.cart.open{
+  left:0;
+}
 
 .close{
   background:none;
   color:white;
   border:0;
-  font-size:30px;
+  font-size:32px;
 }
 
 .item{
@@ -208,7 +222,7 @@ section h2{
   color:white;
   border:0;
   border-radius:14px;
-  padding:13px;
+  padding:14px;
   font-weight:900;
   margin-top:12px;
 }
@@ -219,9 +233,20 @@ section h2{
   color:white;
   border:0;
   border-radius:14px;
-  padding:13px;
+  padding:14px;
   font-weight:900;
   margin-top:10px;
+}
+
+.emptySection{
+  max-width:420px;
+  margin:auto;
+  background:#0a1328;
+  border:1px solid #1e90ff44;
+  border-radius:24px;
+  padding:30px;
+  text-align:center;
+  color:#b8d9ff;
 }
 
 footer{
@@ -232,9 +257,8 @@ footer{
 }
 
 @media(max-width:600px){
-  .hero h1{font-size:32px}
-  .card{min-width:82vw;max-width:82vw}
-  .card img{height:310px}
+  .hero h1{font-size:34px}
+  .slide img{height:350px}
 }
 </style>
 </head>
@@ -242,31 +266,32 @@ footer{
 <body>
 
 <header>
-  <button class="menu">☰</button>
+  <button class="cartBtn" onclick="toggleCart()">0 🛒</button>
   <div class="logo">ZEOZ STORE</div>
-  <button class="cartBtn" onclick="toggleCart()">🛒 <span id="count">0</span></button>
+  <button class="menuBtn" onclick="toggleMenu()">☰</button>
 </header>
 
-<nav>
-  <a href="#home">الرئيسية</a>
-  <a href="#accounts">الحسابات</a>
-  <a href="#subscriptions">الاشتراكات</a>
-  <a href="#rainbow">رينبو</a>
-  <a href="#followers">رشق متابعين</a>
-</nav>
+<div class="mobileMenu" id="mobileMenu">
+  <a href="#home" onclick="toggleMenu()">الرئيسية</a>
+  <a href="#accounts" onclick="toggleMenu()">الحسابات</a>
+  <a href="#subscriptions" onclick="toggleMenu()">الاشتراكات</a>
+  <a href="#rainbow" onclick="toggleMenu()">رينبو</a>
+  <a href="#followers" onclick="toggleMenu()">رشق متابعين</a>
+</div>
 
 <div class="cart" id="cart">
   <button class="close" onclick="toggleCart()">×</button>
   <h2>السلة</h2>
   <div id="cartItems">السلة فارغة</div>
-  <h3>الإجمالي <span id="total">0</span>﷼</h3>
-  <button class="checkout" onclick="checkout()">إتمام الشراء عبر إنستقرام</button>
+  <h3>الإجمالي: <span id="total">0</span>﷼</h3>
+  <button class="checkout" onclick="checkout()">إتمام الشراء عبر إنستغرام</button>
   <button class="clear" onclick="clearCart()">تفريغ السلة</button>
 </div>
 
 <section class="hero" id="home">
   <h1>اكتشف عالم ZEOZ</h1>
   <p>حسابات واشتراكات ورينبو ورشق متابعين بتصميم متجر رهيب وسلة شراء جاهزة</p>
+
   <div class="heroLinks">
     <a href="#accounts">الحسابات</a>
     <a href="#subscriptions">الاشتراكات</a>
@@ -277,74 +302,39 @@ footer{
 
 <section id="accounts">
   <h2>الحسابات</h2>
-  <p class="sub">اسحب يمين ويسار لتصفح المنتجات</p>
+  <p class="sub">منتج واحد يحتوي على 6 صور — اسحب يمين ويسار</p>
 
-  <div class="products">
+  <div class="card">
+    <span class="badge">حساب فورت مميز</span>
 
-    <div class="card">
-      <span class="badge">ضمان ذهبي</span>
-      <img src="images/image1.png" onerror="this.onerror=null;this.src='images/image1.jpg';">
-      <h3>حساب فورت نايت مميز</h3>
-      <div class="price"><span class="old">300﷼</span>250﷼</div>
-      <button class="add" onclick="addToCart('حساب فورت نايت مميز',250)">أضف للسلة</button>
+    <div class="slider">
+      <div class="slide"><img src="images/image1.png" onerror="this.onerror=null;this.src='images/image1.jpg';"></div>
+      <div class="slide"><img src="images/image2.png" onerror="this.onerror=null;this.src='images/image2.jpg';"></div>
+      <div class="slide"><img src="images/image3.png" onerror="this.onerror=null;this.src='images/image3.jpg';"></div>
+      <div class="slide"><img src="images/image4.png" onerror="this.onerror=null;this.src='images/image4.jpg';"></div>
+      <div class="slide"><img src="images/image5.png" onerror="this.onerror=null;this.src='images/image5.jpg';"></div>
+      <div class="slide"><img src="images/image6.png" onerror="this.onerror=null;this.src='images/image6.jpg';"></div>
     </div>
 
-    <div class="card">
-      <span class="badge">صورة 2</span>
-      <img src="images/image2.png" onerror="this.onerror=null;this.src='images/image2.jpg';">
-      <h3>حساب فورت</h3>
-      <div class="price">250﷼</div>
-      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
-    </div>
-
-    <div class="card">
-      <span class="badge">صورة 3</span>
-      <img src="images/image3.png" onerror="this.onerror=null;this.src='images/image3.jpg';">
-      <h3>حساب فورت</h3>
-      <div class="price">250﷼</div>
-      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
-    </div>
-
-    <div class="card">
-      <span class="badge">صورة 4</span>
-      <img src="images/image4.png" onerror="this.onerror=null;this.src='images/image4.jpg';">
-      <h3>حساب فورت</h3>
-      <div class="price">250﷼</div>
-      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
-    </div>
-
-    <div class="card">
-      <span class="badge">صورة 5</span>
-      <img src="images/image5.png" onerror="this.onerror=null;this.src='images/image5.jpg';">
-      <h3>حساب فورت</h3>
-      <div class="price">250﷼</div>
-      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
-    </div>
-
-    <div class="card">
-      <span class="badge">صورة 6</span>
-      <img src="images/image6.png" onerror="this.onerror=null;this.src='images/image6.jpg';">
-      <h3>حساب فورت</h3>
-      <div class="price">250﷼</div>
-      <button class="add" onclick="addToCart('حساب فورت',250)">أضف للسلة</button>
-    </div>
-
+    <h3>حساب فورت نايت</h3>
+    <div class="price">250﷼</div>
+    <button class="add" onclick="addToCart('حساب فورت نايت',250)">أضف للسلة</button>
   </div>
 </section>
 
 <section id="subscriptions">
   <h2>الاشتراكات</h2>
-  <p class="sub">قسم الاشتراكات — أضف منتجاتك لاحقًا</p>
+  <div class="emptySection">لا توجد منتجات حالياً</div>
 </section>
 
 <section id="rainbow">
   <h2>رينبو</h2>
-  <p class="sub">قسم رينبو — أضف منتجاتك لاحقًا</p>
+  <div class="emptySection">لا توجد منتجات حالياً</div>
 </section>
 
 <section id="followers">
   <h2>رشق متابعين</h2>
-  <p class="sub">قسم رشق متابعين — أضف منتجاتك لاحقًا</p>
+  <div class="emptySection">لا توجد منتجات حالياً</div>
 </section>
 
 <footer>
@@ -354,20 +344,23 @@ footer{
 <script>
 let cart = [];
 
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
+
 function toggleCart(){
   document.getElementById("cart").classList.toggle("open");
 }
 
 function addToCart(name, price){
-  cart.push({name, price});
+  cart = [{name, price}];
   renderCart();
   document.getElementById("cart").classList.add("open");
 }
 
 function renderCart(){
-  document.getElementById("count").innerText = cart.length;
-  let total = cart.reduce((sum,item)=>sum+item.price,0);
-  document.getElementById("total").innerText = total;
+  document.querySelector(".cartBtn").innerHTML = cart.length + " 🛒";
+  document.getElementById("total").innerText = cart.reduce((sum,item)=>sum+item.price,0);
 
   if(cart.length === 0){
     document.getElementById("cartItems").innerHTML = "السلة فارغة";
@@ -389,6 +382,7 @@ function checkout(){
     alert("السلة فارغة");
     return;
   }
+
   window.open("https://www.instagram.com/zeoz.store/", "_blank");
 }
 </script>
